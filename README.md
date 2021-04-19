@@ -7,7 +7,7 @@
 </div>
 
 ## Atenção
-Este é uma SDK/Client .Net para <a href="https://github.com/BrasilAPI/BrasilAPI" target="_blank">BrasilAPI</a>!
+Este é um SDK/Client .Net para <a href="https://github.com/BrasilAPI/BrasilAPI" target="_blank">BrasilAPI</a>!
 
 ## Progresso
 - [x] Criar acesso a todos os endpoints (disponiveis até então)
