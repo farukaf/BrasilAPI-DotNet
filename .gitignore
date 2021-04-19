@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/BrasilAPI/BrasilAPI/bin/Debug/netstandard2.0
+/BrasilAPI/BrasilAPI/obj
+/BrasilAPI/BrasilAPI.Test/bin/Debug/netcoreapp3.1
+/BrasilAPI/BrasilAPI.Test/obj
+/BrasilAPI/BrasilAPI/BrasilAPI.csproj.user
+/BrasilAPI/.vs/BrasilAPI
