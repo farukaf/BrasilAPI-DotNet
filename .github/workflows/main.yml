@@ -21,6 +21,7 @@ jobs:
                       
     - name: Build
       run: dotnet build --configuration Release --no-restore
+      working-directory: BrasilAPI/BrasilAPI/
       
     - name: Publish BrasilAPI
       uses: brandedoutcast/publish-nuget@v2.5.2
