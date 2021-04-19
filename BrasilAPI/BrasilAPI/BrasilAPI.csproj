@@ -6,6 +6,8 @@
     <PackageProjectUrl>https://github.com/farukaf/BrasilAPI-DotNet/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/farukaf/BrasilAPI-DotNet/</RepositoryUrl>
     <Description>Um SDK/Client .Net para BrasilAPI</Description>
+    <Version>1.0.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
