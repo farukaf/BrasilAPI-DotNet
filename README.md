@@ -9,7 +9,7 @@
 ## Atenção
 Este é uma SDK/Client .Net para <a href="https://github.com/BrasilAPI/BrasilAPI" target="_blank">BrasilAPI</a>!
 
-## Progress 
+## Progresso
 - [x] Criar acesso a todos os endpoints (disponiveis até então)
 - [x] Implementar tratamento de erros
 - [ ] Disponibilizar .dll via nuget 
@@ -56,6 +56,7 @@ catch (BrasilAPIException ex)
 ## Sobre a Biblioteca
 - Utilizado .Net Standart 2.0 
 - Requer Newtonsoft.Json 10.0.3+
-- Pode ser utilizado a partir do seu sistema .Net Framework 4.6.1+, .Net Core 2.0+ ou Xamarin. Consulte a <a href="https://docs.microsoft.com/en-us/dotnet/standard/net-standard" target="_blank">documentação</a> oficial da Microsoft para mais informações.
+
+Pode ser utilizado a partir do seu sistema .Net Framework 4.6.1+, .Net Core 2.0+ ou Xamarin. Consulte a <a href="https://docs.microsoft.com/en-us/dotnet/standard/net-standard" target="_blank">documentação</a> oficial da Microsoft para mais informações.
 
 
