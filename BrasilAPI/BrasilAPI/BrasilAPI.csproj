@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Faruk A F</Authors>
+    <PackageProjectUrl>https://github.com/farukaf/BrasilAPI-DotNet/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/farukaf/BrasilAPI-DotNet/</RepositoryUrl>
+    <Description>Um SDK/Client .Net para BrasilAPI</Description>
   </PropertyGroup>
 
   <ItemGroup>

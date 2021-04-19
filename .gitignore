@@ -9,3 +9,5 @@
 /BrasilAPI/BrasilAPI.Test/obj
 /BrasilAPI/BrasilAPI/BrasilAPI.csproj.user
 /BrasilAPI/.vs/BrasilAPI
+/BrasilAPI/BrasilAPI/bin
+/BrasilAPI/BrasilAPI/Properties/PublishProfiles
