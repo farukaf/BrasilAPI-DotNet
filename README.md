@@ -8,9 +8,7 @@
 
 ## Atenção
 Este é um SDK/Client .Net para <a href="https://github.com/BrasilAPI/BrasilAPI" target="_blank">BrasilAPI</a>!
-
-v1.0
-
+ 
 ## Progresso
 - [x] Criar acesso a todos os endpoints (disponiveis até então)
 - [x] Implementar tratamento de erros
@@ -55,7 +53,7 @@ catch (BrasilAPIException ex)
 ```
 
 
-## Sobre a Biblioteca
+# Sobre a Biblioteca
 - Utilizado .Net Standart 2.0 
 - Requer Newtonsoft.Json 10.0.3+
 
