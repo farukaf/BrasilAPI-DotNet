@@ -17,6 +17,7 @@ jobs:
         
     - name: Install dependencies
       run: dotnet restore
+      working-directory: BrasilAPI/BrasilAPI/
                       
     - name: Build
       run: dotnet build --configuration Release --no-restore
