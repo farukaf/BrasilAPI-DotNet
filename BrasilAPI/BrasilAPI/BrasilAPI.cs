@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -203,7 +204,7 @@ namespace BrasilAPI
                 JsonResponse = json
             };
 
-            return ibgeResponse; 
+            return ibgeResponse;
         }
 
         /// <summary>
@@ -284,14 +285,31 @@ namespace BrasilAPI
         {
             if ((int)response.StatusCode >= 400)
             {
-                throw new BrasilAPIException()
+                string contentString = await response.Content.ReadAsStringAsync();
+                object content = contentString;
+                string message = "Error while trying to access the BrasilAPI";
+
+                try
                 {
-                    ContentData = await response.Content.ReadAsStringAsync(),
+                    var jsonObj = JsonConvert.DeserializeObject<JToken>(contentString);
+                    content = jsonObj;
+                    message = (string)jsonObj["message"];
+                }
+                catch (Exception)
+                {
+
+                }
+
+                throw new BrasilAPIException(message)
+                {
+                    ContentData = content,
                     Code = (int)response.StatusCode,
                     URL = url
                 };
             }
         }
+
+
 
         public void Dispose()
         {

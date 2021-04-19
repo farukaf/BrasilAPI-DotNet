@@ -47,6 +47,7 @@ namespace BrasilAPI.Test
         public async Task Test03()
         {
             //Arrange
+            //CNPJ inválido
             var cnpj = "00.000.000/0001-00";
             CNPJResponse cnpjResponse = new CNPJResponse();
 
@@ -62,6 +63,8 @@ namespace BrasilAPI.Test
             {
                 //Assert 
                 Assert.IsTrue(ex.Code >= 400);
+                Console.WriteLine(ex.Message);
+                Assert.IsFalse(string.IsNullOrEmpty(ex.Message));
             } 
         }
     }
