@@ -14,10 +14,14 @@ Este é um SDK/Client .Net para <a href="https://github.com/BrasilAPI/BrasilAPI"
 - [x] Implementar tratamento de erros
 - [x] Disponibilizar via nuget 
 - [ ] Automatizar testes
-- [ ] Automatizar envio nuget
+- [x] Automatizar envio nuget
 
 ## Como utilizar
 * NuGet disponível: https://www.nuget.org/packages/BrasilAPI [![NuGet](https://img.shields.io/nuget/v/BrasilAPI.svg)](https://www.nuget.org/packages/BrasilAPI/)
+
+``` cs
+using SDKBrasilAPI;
+``` 
 
 Exemplo para receber a lista de cidades com DDD 17:
 ``` cs
