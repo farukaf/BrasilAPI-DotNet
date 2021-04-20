@@ -1,8 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SDKBrasilAPI;
 using System;
 using System.Threading.Tasks;
 
-namespace BrasilAPI.Test
+namespace BrasilAPI_Test
 {
     [TestClass]
     public class CNPJ_Test

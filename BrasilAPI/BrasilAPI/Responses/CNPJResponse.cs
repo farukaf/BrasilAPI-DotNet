@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace BrasilAPI
+namespace SDKBrasilAPI
 {
     [DataContract]
     public class CNPJResponse : BaseResponse

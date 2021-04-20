@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SDKBrasilAPI;
 
-namespace BrasilAPI.Test
+namespace BrasilAPI_Test
 {
     [TestClass]
     public class Bank_Tests

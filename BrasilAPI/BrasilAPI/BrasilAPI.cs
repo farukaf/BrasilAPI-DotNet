@@ -1,16 +1,15 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using System.Threading.Tasks; 
 
 [assembly: InternalsVisibleTo("BrasilAPI.Test")]
 
-namespace BrasilAPI
+namespace SDKBrasilAPI
 {
     public class BrasilAPI : IDisposable
     {
@@ -71,7 +70,7 @@ namespace BrasilAPI
 
             var json = await response.Content.ReadAsStringAsync();
 
-            var cepResponse = JsonConvert.DeserializeObject<CEPResponse>(json);
+            var cepResponse =  JsonConvert.DeserializeObject<CEPResponse>(json);
 
             cepResponse.CalledURL = baseUrl;
             cepResponse.JsonResponse = json;
@@ -291,7 +290,7 @@ namespace BrasilAPI
 
                 try
                 {
-                    var jsonObj = JsonConvert.DeserializeObject<JToken>(contentString);
+                    dynamic jsonObj = JsonConvert.DeserializeObject<object>(contentString);
                     content = jsonObj;
                     message = (string)jsonObj["message"];
                 }

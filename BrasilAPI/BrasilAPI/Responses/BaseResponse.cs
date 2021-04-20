@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BrasilAPI
+namespace SDKBrasilAPI
 {
     public abstract class BaseResponse
     {

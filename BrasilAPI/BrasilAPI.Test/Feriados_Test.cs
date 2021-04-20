@@ -1,11 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SDKBrasilAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrasilAPI.Test
+namespace BrasilAPI_Test
 {
     [TestClass]
     public class Feriados_Test
