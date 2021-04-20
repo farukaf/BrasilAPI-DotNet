@@ -6,17 +6,19 @@
   </p>
 </div>
 
-## Atenção
+# Atenção
 Este é um SDK/Client .Net para <a href="https://github.com/BrasilAPI/BrasilAPI" target="_blank">BrasilAPI</a>!
-
-v1.0
-
+ 
 ## Progresso
 - [x] Criar acesso a todos os endpoints (disponiveis até então)
 - [x] Implementar tratamento de erros
-- [ ] Disponibilizar .dll via nuget 
+- [x] Disponibilizar via nuget 
+- [ ] Automatizar testes
+- [ ] Automatizar envio nuget
 
 ## Como utilizar
+* NuGet disponível: https://www.nuget.org/packages/BrasilAPI [![NuGet](https://img.shields.io/nuget/v/BrasilAPI.svg)](https://www.nuget.org/packages/BrasilAPI/)
+
 Exemplo para receber a lista de cidades com DDD 17:
 ``` cs
 using (var brasilAPI = new BrasilAPI())
