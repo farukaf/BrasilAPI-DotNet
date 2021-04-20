@@ -23,7 +23,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
       working-directory: BrasilAPI/BrasilAPI/
       
-    - name: Publish BrasilAPI-DotNet
+    - name: Publish BrasilAPI-DotNet 
       uses: brandedoutcast/publish-nuget@v2.5.2
       with:
           PROJECT_FILE_PATH: BrasilAPI/BrasilAPI/BrasilAPI.csproj
