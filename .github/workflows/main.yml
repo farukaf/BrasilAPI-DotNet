@@ -25,6 +25,7 @@ jobs:
        
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+      working-directory: BrasilAPI/BrasilAPI/
       
     - name: Publish BrasilAPI-DotNet 
       uses: brandedoutcast/publish-nuget@v2.5.2
