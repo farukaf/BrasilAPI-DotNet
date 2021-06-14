@@ -8,13 +8,6 @@
 
 # Atenção
 Este é um SDK/Client .Net para <a href="https://github.com/BrasilAPI/BrasilAPI" target="_blank">BrasilAPI</a>!
- 
-## Progresso
-- [x] Criar acesso a todos os endpoints (disponiveis até então)
-- [x] Implementar tratamento de erros
-- [x] Disponibilizar via nuget 
-- [ ] Automatizar testes
-- [x] Automatizar envio nuget
 
 ## Como utilizar
 * NuGet disponível: https://www.nuget.org/packages/BrasilAPI [![NuGet](https://img.shields.io/nuget/v/BrasilAPI.svg)](https://www.nuget.org/packages/BrasilAPI/)
