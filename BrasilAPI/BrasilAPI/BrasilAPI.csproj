@@ -6,9 +6,11 @@
     <PackageProjectUrl>https://github.com/farukaf/BrasilAPI-DotNet/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/farukaf/BrasilAPI-DotNet/</RepositoryUrl>
     <Description>Um SDK/Client .Net para BrasilAPI</Description>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <RootNamespace>SDKBrasilAPI</RootNamespace>
+    <PackageReleaseNotes>Adicionado três novos endpoints relacionados a tabela FIPE</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

@@ -44,7 +44,7 @@ namespace ConsoleApp
             Console.WriteLine("BrasilAPI.CEP");
             using (var brasilAPI = new BrasilAPI())
             {
-                var cepResponse = await brasilAPI.CEP("89010025");
+                var cepResponse = await brasilAPI.CEP_V2("89010025");
                 var propInfo = cepResponse.GetType().GetProperties();
 
                 foreach (var prop in propInfo)

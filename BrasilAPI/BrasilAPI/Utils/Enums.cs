@@ -35,4 +35,11 @@ namespace SDKBrasilAPI
         DF = 53
     }
      
+
+    public enum TipoVeiculo
+    {
+        carros,
+        motos,
+        caminhoes
+    }
 }
