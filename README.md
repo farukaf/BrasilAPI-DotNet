@@ -21,7 +21,7 @@ Exemplo para receber a lista de cidades com DDD 17:
 using (var brasilAPI = new BrasilAPI())
 {
   var response = await brasilAPI.DDD(17);
-  foreach (var city in dddResponse.Cities)
+  foreach (var city in response.Cities)
   {
     Console.WriteLine(city);
   }
