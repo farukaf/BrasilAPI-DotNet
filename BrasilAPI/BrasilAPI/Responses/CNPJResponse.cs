@@ -65,11 +65,11 @@ namespace SDKBrasilAPI
         [DataMember(Name = "capital_social")]
         public float CapitalSocial { get; set; }
         [DataMember(Name = "porte")]
-        public int Porte { get; set; }
+        public string Porte { get; set; }
         [DataMember(Name = "descricao_porte")]
         public string DescricaoPorte { get; set; }
         [DataMember(Name = "opcao_pelo_simples")]
-        public bool OpcaoPeloSimples { get; set; }
+        public bool? OpcaoPeloSimples { get; set; }
 
         //TODO: ver qual o tipo de objeto pode vir aqui
         [DataMember(Name = "data_opcao_pelo_simples")]
@@ -80,7 +80,7 @@ namespace SDKBrasilAPI
         public object DataExclusaoDoSimples { get; set; }
 
         [DataMember(Name = "opcao_pelo_mei")]
-        public bool OpcaoPeloMEI { get; set; }
+        public bool? OpcaoPeloMEI { get; set; }
 
         //TODO: ver qual o tipo de objeto pode vir aqui
         [DataMember(Name = "situacao_especial")]
