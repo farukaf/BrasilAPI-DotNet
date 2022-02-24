@@ -3,9 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-namespace ConsoleApp
-{
+ 
     class Program
     {
         static void Main(string[] args)
@@ -122,15 +120,23 @@ namespace ConsoleApp
             Console.WriteLine("BrasilAPI.IBGE");
             using (var brasilAPI = new BrasilAPI())
             {
-                var ibgeResponse = await brasilAPI.IBGE_UF(); 
+                var ibgeResponse = await brasilAPI.IBGE_UF();
 
                 foreach (var ibge in ibgeResponse.IBGEs)
-                {  
+                {
                     Console.WriteLine("{0}: {1}", ibge.Sigla, ibge.Nome);
+                }
+
+                Console.WriteLine();
+
+                var ibgeMunicipiosResponse = await brasilAPI.IBGE_Municipios(UF.RR);
+
+                foreach (var municipio in ibgeMunicipiosResponse.Municipios)
+                {
+                    Console.WriteLine("{0}: {1}", municipio.CodigoIBGE, municipio.Nome);
                 }
 
                 Console.WriteLine();
             }
         }
-    }
-}
+    } 
