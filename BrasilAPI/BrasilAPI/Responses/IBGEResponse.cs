@@ -29,6 +29,7 @@ namespace SDKBrasilAPI
         public Regiao Regiao { get; set; }
     }
 
+    [DataContract]
     public class Regiao
     {
         [DataMember(Name = "id")]

@@ -286,6 +286,31 @@ namespace SDKBrasilAPI
         }
 
         /// <summary>
+        /// Lista os municicípios a partir da UF
+        /// </summary>
+        /// <param name="uf"></param>
+        /// <returns></returns>
+        public async Task<IBGEMunicipiosResponse> IBGE_Municipios(UF uf)
+        {
+            string baseUrl = $"{BASE_URL}/ibge/municipios/v1/{uf}";
+
+            var response = await Client.GetAsync(baseUrl);
+
+            await EnsureSuccess(response, baseUrl);
+
+            var json = await response.Content.ReadAsStringAsync();
+
+            var ibgeResponse = new IBGEMunicipiosResponse()
+            {
+                Municipios = JsonConvert.DeserializeObject<IEnumerable<Municipio>>(json),
+                CalledURL = baseUrl,
+                JsonResponse = json
+            };
+
+            return ibgeResponse;
+        }
+
+        /// <summary>
         /// Lista as marca de veículos referente ao tipo de veículo
         /// </summary>
         /// <param name="tipoVeiculo">Os tipos suportados são caminhoes, carros e motos. Quando o tipo não é específicado são buscada as marcas de todos os tipos de veículos</param>
