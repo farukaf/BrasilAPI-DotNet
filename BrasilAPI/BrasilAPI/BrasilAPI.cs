@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SDKBrasilAPI.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -318,7 +319,7 @@ namespace SDKBrasilAPI
         /// <returns></returns>
         public async Task<FIPEMarcasResponse> FIPE_Marcas(TipoVeiculo? tipoVeiculo = null, long? tabelaReferencia = null)
         {
-            string baseUrl = $"{BASE_URL}/fipe/marcas/v1/{tipoVeiculo?.ToString() ?? "" }";
+            string baseUrl = $"{BASE_URL}/fipe/marcas/v1/{tipoVeiculo?.ToString() ?? ""}";
 
             if (tabelaReferencia != null)
             {
@@ -396,6 +397,25 @@ namespace SDKBrasilAPI
             return fipeResponse;
         }
 
+        /// <summary>
+        /// Avalia o status de um dominio .br
+        /// </summary>
+        /// <param name="dominio">O domínio ou nome a ser avaliado</param>
+        /// <returns></returns>
+        public async Task<RegistroBrResponse> RegistroBR(string dominio)
+        {
+            string baseUrl = $"{BASE_URL}/registrobr/v1/{dominio.Trim()}";
+            var response = await Client.GetAsync(baseUrl);
+            await EnsureSuccess(response, baseUrl);
+            var json = await response.Content.ReadAsStringAsync();
+
+            var registroResponse = JsonConvert.DeserializeObject<RegistroBrResponse>(json);
+
+            registroResponse.CalledURL = baseUrl;
+            registroResponse.JsonResponse = json;
+
+            return registroResponse;
+        }
 
 
         private const string BASE_URL = "https://brasilapi.com.br/api";
