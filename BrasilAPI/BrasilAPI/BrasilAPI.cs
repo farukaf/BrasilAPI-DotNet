@@ -460,6 +460,7 @@ namespace SDKBrasilAPI
 
         internal string OnlyNumbers(string str)
         {
+            if (string.IsNullOrEmpty(str)) return string.Empty;
             return Regex.Replace(str, @"[^\d]", "");
         }
 
