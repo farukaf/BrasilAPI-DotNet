@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -417,6 +418,42 @@ namespace SDKBrasilAPI
             return registroResponse;
         }
 
+        public async Task<TaxasResponse> Taxas()
+        {
+            string baseUrl = $"{BASE_URL}/taxas/v1";
+            var response = await Client.GetAsync(baseUrl);
+            await EnsureSuccess(response, baseUrl);
+            var json = await response.Content.ReadAsStringAsync();
+
+            var taxasResponse = new TaxasResponse()
+            {
+                Taxas = JsonConvert.DeserializeObject<IEnumerable<Taxa>>(json),
+                CalledURL = baseUrl,
+                JsonResponse = json
+            };
+
+            return taxasResponse;
+        }
+        public async Task<TaxasResponse> Taxas(string sigla = "")
+        {
+            string baseUrl = $"{BASE_URL}/taxas/v1/{sigla.Trim()}";
+            var response = await Client.GetAsync(baseUrl);
+            await EnsureSuccess(response, baseUrl);
+            var json = await response.Content.ReadAsStringAsync();
+
+            var taxasResponse = new TaxasResponse()
+            {
+                Taxas = new List<Taxa>()
+                {
+                    JsonConvert.DeserializeObject<Taxa>(json)
+                },
+                CalledURL = baseUrl,
+                JsonResponse = json
+            };
+
+            return taxasResponse;
+        }
+
 
         private const string BASE_URL = "https://brasilapi.com.br/api";
         private HttpClient Client;
@@ -430,7 +467,15 @@ namespace SDKBrasilAPI
         {
             HttpClient client = new HttpClient();
 
-            if (headers != null)
+            if (headers == null)
+                headers = new Dictionary<string, object>();
+
+            string userAgent = UserAgent();
+
+            if (!string.IsNullOrWhiteSpace(userAgent))
+                headers["user-agent"] = userAgent;
+
+            if (headers.Any())
             {
                 foreach (var header in headers)
                 {
@@ -439,9 +484,17 @@ namespace SDKBrasilAPI
                         client.DefaultRequestHeaders.Add(header.Key, header.Value.ToString());
                     }
                 }
+
             }
 
             return client;
+        }
+
+        internal string UserAgent()
+        {
+            var thisLib = Assembly.GetExecutingAssembly().GetName();
+            var userAgent = $"BrasilAPI.DotNet/{thisLib.Version}";
+            return userAgent;
         }
 
         private async Task EnsureSuccess(HttpResponseMessage response, string url)
@@ -471,9 +524,7 @@ namespace SDKBrasilAPI
                 };
             }
         }
-
-
-
+         
         public void Dispose()
         {
             Client = null;
