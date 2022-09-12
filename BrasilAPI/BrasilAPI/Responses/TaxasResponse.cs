@@ -14,10 +14,10 @@ namespace SDKBrasilAPI.Responses
     [DataContract]
     public class Taxa
     {
-        [DataMember(Name = "name")]
-        public string Name { get; set; }
-        [DataMember(Name = "value")]
-        public float Value { get; set; }
+        [DataMember(Name = "nome")]
+        public string Nome { get; set; }
+        [DataMember(Name = "valor")]
+        public float Valor { get; set; }
     }
 
 }
