@@ -16,36 +16,19 @@ namespace BrasilAPI_Test
         public async Task Test01()
         {
             //Arrange 
-            TaxasResponse taxasResponse = new TaxasResponse();
+            RegistroBrResponse registroResponse = new RegistroBrResponse();
+            var test = "brasilapi.com.br";
 
             //Act
             using (var brasilAPI = new BrasilAPI())
             {
-                taxasResponse = await brasilAPI.Taxas();
+                registroResponse = await brasilAPI.RegistroBR(test);
             }
 
             //Assert
-            Assert.IsNotNull(taxasResponse);
-            Assert.IsTrue(taxasResponse.Taxas.Any());
+            Assert.IsNotNull(registroResponse);
+            Assert.AreEqual(test, registroResponse.Fqdn);
         }
 
-        [TestMethod]
-        public async Task Test02()
-        {
-            //Arrange 
-            TaxasResponse taxasResponse = new TaxasResponse();
-            var testName = "cdi";
-
-            //Act
-            using (var brasilAPI = new BrasilAPI())
-            {
-                taxasResponse = await brasilAPI.Taxas(testName);
-            }
-
-            //Assert
-            Assert.IsNotNull(taxasResponse);
-            Assert.IsTrue(taxasResponse.Taxas.Any());
-            Assert.IsTrue(taxasResponse.Taxas.First().Nome.ToLower().Contains(testName));
-        }
     }
 }
