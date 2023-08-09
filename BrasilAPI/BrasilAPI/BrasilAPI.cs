@@ -454,6 +454,23 @@ namespace SDKBrasilAPI
             return taxasResponse;
         }
 
+        public async Task<CorretorasResponse> Corretoras()
+        {
+            string baseUrl = $"{BASE_URL}/corretoras/v1";
+            var response = await Client.GetAsync(baseUrl);
+            await EnsureSuccess(response, baseUrl);
+            var json = await response.Content.ReadAsStringAsync();
+
+            var corretorasResponse = new CorretorasResponse()
+            {
+                Corretoras = JsonConvert.DeserializeObject<List<Corretora>>(json),
+                CalledURL = baseUrl,
+                JsonResponse = json
+            };
+
+            return corretorasResponse;
+        }
+
 
         private const string BASE_URL = "https://brasilapi.com.br/api";
         private HttpClient Client;
@@ -525,7 +542,7 @@ namespace SDKBrasilAPI
                 };
             }
         }
-         
+
         public void Dispose()
         {
             Client = null;
