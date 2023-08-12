@@ -13,7 +13,7 @@ namespace SDKBrasilAPI.Responses
         [DataMember(Name = "atualizado_em")]
         public string AtualizadoEm { get; set; }
         [DataMember(Name = "ondas")]
-        public List<Onda> Ondas { get; set; }
+        public IEnumerable<Onda> Ondas { get; set; }
     }
 
     [DataContract] 

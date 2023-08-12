@@ -13,7 +13,7 @@ namespace SDKBrasilAPI.Responses
         [DataMember(Name = "atualizado_em")]
         public string AtualizadoEm { get; set; }
         [DataMember(Name = "clima")]
-        public List<Clima> Clima { get; set; }
+        public IEnumerable<Clima> Clima { get; set; }
     }
 
     [DataContract]

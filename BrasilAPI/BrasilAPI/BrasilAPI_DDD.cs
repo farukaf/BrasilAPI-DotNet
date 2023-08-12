@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SDKBrasilAPI.Responses;
 using System;
 using System.Threading.Tasks;
 

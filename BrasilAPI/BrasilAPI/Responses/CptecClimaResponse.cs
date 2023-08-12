@@ -6,7 +6,7 @@ namespace SDKBrasilAPI.Responses
 {
     public class CptecClimaResponse : BaseResponse
     {
-        public List<CptecClima> Climas { get; set; }
+        public IEnumerable<CptecClima> Climas { get; set; }
     }
 
     [DataContract]

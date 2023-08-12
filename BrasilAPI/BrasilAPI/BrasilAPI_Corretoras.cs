@@ -21,7 +21,7 @@ namespace SDKBrasilAPI
 
             var corretorasResponse = new CorretorasResponse()
             {
-                Corretoras = JsonConvert.DeserializeObject<List<Corretora>>(json),
+                Corretoras = JsonConvert.DeserializeObject<IEnumerable<Corretora>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };

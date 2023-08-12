@@ -27,7 +27,7 @@ namespace SDKBrasilAPI
 
             var response = new CptecCidadeResponse()
             {
-                Cidades = JsonConvert.DeserializeObject<List<CptecCidade>>(json),
+                Cidades = JsonConvert.DeserializeObject<IEnumerable<CptecCidade>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };
@@ -52,7 +52,7 @@ namespace SDKBrasilAPI
 
             var response = new CptecCidadeResponse()
             {
-                Cidades = JsonConvert.DeserializeObject<List<CptecCidade>>(json),
+                Cidades = JsonConvert.DeserializeObject<IEnumerable<CptecCidade>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };
@@ -75,7 +75,7 @@ namespace SDKBrasilAPI
 
             var response = new CptecClimaResponse()
             {
-                Climas = JsonConvert.DeserializeObject<List<CptecClima>>(json),
+                Climas = JsonConvert.DeserializeObject<IEnumerable<CptecClima>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };
