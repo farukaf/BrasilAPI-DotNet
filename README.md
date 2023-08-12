@@ -12,6 +12,47 @@ Este é um SDK/Client .Net para <a href="https://github.com/BrasilAPI/BrasilAPI"
 ## Como utilizar
 * NuGet disponível: https://www.nuget.org/packages/BrasilAPI [![NuGet](https://img.shields.io/nuget/v/BrasilAPI.svg)](https://www.nuget.org/packages/BrasilAPI/)
 
+
+## Utilização com injeção de dependencia
+
+Realizar a injeção na sua camada de service. 
+ConfigureServices na classe Startup.cs ou Program.cs como abaixo.
+
+Exemplo da implementação no Program.cs
+``` cs
+using SDKBrasilAPI;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddBrasilApi();
+``` 
+
+Utilização em um endpoint minimal API
+``` cs
+app.MapGet("/ParticipantesPIX", async (IBrasilAPI brasilAPI) =>
+{ 
+    return await brasilAPI.ParticipantesPIX();
+});
+``` 
+
+Utilização em uma controller MVC
+``` cs 
+[ApiVersion("2")]
+[Route("v{version:apiVersion}/[controller]")]
+public class ServiceController : ControllerBase
+{ 
+	private readonly IBrasilAPI _brasilAPI;
+
+	public ServiceController(IBrasilAPI brasilAPI)
+	{
+		_brasilAPI = brasilAPI; 
+	}
+}
+```
+ 
+ 
+## Utilização sem injeção de dependencia (não recomendado)
+
 ``` cs
 using SDKBrasilAPI;
 ``` 
