@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SDKBrasilAPI;
+using SDKBrasilAPI.Responses;
 using System;
 using System.Threading.Tasks;
 

@@ -1,9 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SDKBrasilAPI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using SDKBrasilAPI.Responses;
+using System; 
+using System.Linq; 
 using System.Threading.Tasks;
 
 namespace BrasilAPI_Test
