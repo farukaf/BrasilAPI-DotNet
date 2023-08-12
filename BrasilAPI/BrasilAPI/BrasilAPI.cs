@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -417,7 +418,10 @@ namespace SDKBrasilAPI
 
             return registroResponse;
         }
-
+        /// <summary>
+        /// Retorna as taxas de juros e alguns índices oficiais do Brasil
+        /// </summary>
+        /// <returns></returns>
         public async Task<TaxasResponse> Taxas()
         {
             string baseUrl = $"{BASE_URL}/taxas/v1";
@@ -434,6 +438,13 @@ namespace SDKBrasilAPI
 
             return taxasResponse;
         }
+        /// <summary>
+        /// Retorna as taxas de juros e alguns índices oficiais do Brasil
+        /// <para/>
+        /// Busca as informações de uma taxa a partir do seu nome/sigla
+        /// </summary>
+        /// <param name="sigla"></param>
+        /// <returns></returns>
         public async Task<TaxasResponse> Taxas(string sigla = "")
         {
             string baseUrl = $"{BASE_URL}/taxas/v1/{sigla.Trim()}";
@@ -454,6 +465,10 @@ namespace SDKBrasilAPI
             return taxasResponse;
         }
 
+        /// <summary>
+        /// Retorna as corretoras nos arquivos da CVM.
+        /// </summary>
+        /// <returns></returns>
         public async Task<CorretorasResponse> Corretoras()
         {
             string baseUrl = $"{BASE_URL}/corretoras/v1";
@@ -471,6 +486,194 @@ namespace SDKBrasilAPI
             return corretorasResponse;
         }
 
+        /// <summary>
+        /// Busca por corretoras nos arquivos da CVM.
+        /// </summary>
+        /// <param name="cnpj">
+        /// O Cadastro Nacional da Pessoa Jurídica é um número único que identifica uma pessoa jurídica e outros tipos de arranjo jurídico sem personalidade jurídica junto à Receita Federal.
+        /// </param>
+        /// <returns></returns>
+        public async Task<CorretorasResponse> Corretoras(string cnpj)
+        {
+            string baseUrl = $"{BASE_URL}/corretoras/v1/{cnpj}";
+            var response = await Client.GetAsync(baseUrl);
+            await EnsureSuccess(response, baseUrl);
+            var json = await response.Content.ReadAsStringAsync();
+
+            var corretorasResponse = new CorretorasResponse()
+            {
+                Corretoras = new List<Corretora>() {
+                    JsonConvert.DeserializeObject<Corretora>(json)
+                },
+                CalledURL = baseUrl,
+                JsonResponse = json
+            };
+
+            return corretorasResponse;
+        }
+
+        /// <summary>
+        /// Abstração e normalização de dados provenientes da CPTEC. Fonte oficial: CPTEC/INPE
+        /// <para/>
+        /// Retorna listagem com todas as cidades junto a seus respectivos códigos presentes nos serviços da CPTEC. 
+        /// O Código destas cidades será utilizado para os serviços de meteorologia e a ondas (previsão oceânica) fornecido pelo centro. 
+        /// Leve em consideração que o WebService do CPTEC as vezes é instável, então se não encontrar uma determinada cidade na listagem completa, tente buscando por parte de seu nome no endpoint de busca.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<CptecCidadeResponse> CptecCidade()
+        {
+            string baseUrl = $"{BASE_URL}/cptec/v1/cidade";
+            var httpResponse = await Client.GetAsync(baseUrl);
+            await EnsureSuccess(httpResponse, baseUrl);
+            var json = await httpResponse.Content.ReadAsStringAsync();
+
+            var response = new CptecCidadeResponse()
+            {
+                Cidades = JsonConvert.DeserializeObject<List<CptecCidade>>(json),
+                CalledURL = baseUrl,
+                JsonResponse = json
+            };
+
+            return response;
+        }
+
+        /// <summary>
+        /// Abstração e normalização de dados provenientes da CPTEC. Fonte oficial: CPTEC/INPE
+        /// <para/>
+        /// Retorna listagem com todas as cidades correspondentes ao termo pesquisado junto a seus respectivos códigos presentes nos serviços da CPTEC.
+        /// O Código destas cidades será utilizado para os serviços de meteorologia e a ondas (previsão oceânica) fornecido pelo centro.
+        /// </summary> 
+        /// <param name="cidadeNome">Nome ou parte do nome da cidade a ser buscada</param>
+        /// <returns></returns>
+        public async Task<CptecCidadeResponse> CptecCidade(string cidadeNome)
+        {
+            string baseUrl = $"{BASE_URL}/cptec/v1/cidade/{cidadeNome}";
+            var httpResponse = await Client.GetAsync(baseUrl);
+            await EnsureSuccess(httpResponse, baseUrl);
+            var json = await httpResponse.Content.ReadAsStringAsync();
+
+            var response = new CptecCidadeResponse()
+            {
+                Cidades = JsonConvert.DeserializeObject<List<CptecCidade>>(json),
+                CalledURL = baseUrl,
+                JsonResponse = json
+            };
+
+            return response;
+        }
+
+        /// <summary>
+        /// Condições atuais no aeroporto 
+        /// Retorna condições meteorológicas atuais no aeroporto solicitado.Este endpoint utiliza o código ICAO(4 dígitos) do aeroporto.
+        /// </summary>
+        /// <param name="icaoCodigo">Código ICAO (4 dígitos) do aeroporto desejado</param>
+        /// <returns></returns>
+        public async Task<CptecClimaResponse> CptecClimaAeroporto(string icaoCodigo)
+        {
+            string baseUrl = $"{BASE_URL}/cptec/v1/clima/aeroporto/{icaoCodigo}";
+            var response = await Client.GetAsync(baseUrl);
+            await EnsureSuccess(response, baseUrl);
+            var json = await response.Content.ReadAsStringAsync();
+
+            var corretorasResponse = new CptecClimaResponse()
+            {
+                Climas = new List<CptecClima>(){
+                    JsonConvert.DeserializeObject<CptecClima>(json)
+                },
+                CalledURL = baseUrl,
+                JsonResponse = json
+            };
+
+            return corretorasResponse;
+        }
+
+        /// <summary>
+        /// Previsão meteorológica para uma cidade
+        /// Retorna Pervisão meteorológica para 1 dia na cidade informada.
+        /// </summary>
+        /// <param name="cidadeCodigo">Código da cidade fornecido <see cref="CptecCidade" /></param>
+        /// <returns></returns>
+        public async Task<CptecPrevisaoResponse> CptecClimaPrevisao(int cidadeCodigo)
+        {
+            string baseUrl = $"{BASE_URL}/cptec/v1/clima/previsao/{cidadeCodigo}";
+            var httpResponse = await Client.GetAsync(baseUrl);
+            await EnsureSuccess(httpResponse, baseUrl);
+            var json = await httpResponse.Content.ReadAsStringAsync();
+
+            var response = JsonConvert.DeserializeObject<CptecPrevisaoResponse>(json);
+
+            response.CalledURL = baseUrl;
+            response.JsonResponse = json;
+
+            return response;
+        }
+
+        /// <summary>
+        /// Previsão meteorológica para, até, 6 dias
+        /// Retorna a previsão meteorológica para a cidade informada para um período de 1 até 6 dias. Devido a inconsistências encontradas nos retornos da CPTEC nossa API só consegue retornar com precisão o período máximo de 6 dias.
+        /// </summary>
+        /// <param name="cidadeCodigo">Código da cidade fornecido <see cref="CptecCidade" /></param>
+        /// <param name="dias">Quantidade de dias desejado para a previsão /></param>
+        /// <returns></returns>
+        public async Task<CptecPrevisaoResponse> CptecClimaPrevisao(int cidadeCodigo, int dias)
+        {
+            string baseUrl = $"{BASE_URL}/cptec/v1/clima/previsao/{cidadeCodigo}/{dias}";
+            var httpResponse = await Client.GetAsync(baseUrl);
+            await EnsureSuccess(httpResponse, baseUrl);
+            var json = await httpResponse.Content.ReadAsStringAsync();
+
+            var response = JsonConvert.DeserializeObject<CptecPrevisaoResponse>(json);
+
+            response.CalledURL = baseUrl;
+            response.JsonResponse = json;
+
+            return response;
+        }
+
+        /// <summary>
+        /// Retorna a previsão oceânica para a cidade informada para 1 dia
+        /// </summary>
+        /// <param name="cidadeCodigo">Código da cidade fornecido <see cref="CptecCidade" /></param>
+        /// <returns></returns>
+        public async Task<CptecOndasResponse> CptecOndas(int cidadeCodigo)
+        {
+            string baseUrl = $"{BASE_URL}/cptec/v1/clima/ondas/{cidadeCodigo}";
+            var httpResponse = await Client.GetAsync(baseUrl);
+            await EnsureSuccess(httpResponse, baseUrl);
+            var json = await httpResponse.Content.ReadAsStringAsync();
+
+            var response = JsonConvert.DeserializeObject<CptecOndasResponse>(json);
+
+            response.CalledURL = baseUrl;
+            response.JsonResponse = json;
+
+            return response;
+        }
+
+        /// <summary>
+        /// Retorna a previsão meteorológica para a cidade informada para um período de 1 até 6 dias. 
+        /// Devido a inconsistências encontradas nos retornos da CPTEC nossa API só consegue retornar com precisão o período máximo de 6 dias.
+        /// </summary>
+        /// <param name="cidadeCodigo">Código da cidade fornecido <see cref="CptecCidade" /></param>
+        /// <param name="dias">Quantidade de dias desejado para a previsão</param>
+        /// <returns></returns>
+        public async Task<CptecOndasResponse> CptecOndas(int cidadeCodigo, int dias)
+        {
+            string baseUrl = $"{BASE_URL}/cptec/v1/clima/ondas/{cidadeCodigo}/{dias}";
+            var httpResponse = await Client.GetAsync(baseUrl);
+            await EnsureSuccess(httpResponse, baseUrl);
+            var json = await httpResponse.Content.ReadAsStringAsync();
+
+            var response = JsonConvert.DeserializeObject<CptecOndasResponse>(json);
+
+            response.CalledURL = baseUrl;
+            response.JsonResponse = json;
+
+            return response;
+        }
+
+
+        #region Internal
 
         private const string BASE_URL = "https://brasilapi.com.br/api";
         private HttpClient Client;
@@ -547,5 +750,7 @@ namespace SDKBrasilAPI
         {
             Client = null;
         }
+
+        #endregion
     }
 }
