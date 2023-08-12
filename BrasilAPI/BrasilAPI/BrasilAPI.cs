@@ -565,6 +565,30 @@ namespace SDKBrasilAPI
         }
 
         /// <summary>
+        /// Condições atuais nas capitais
+        /// <para/>
+        /// Retorna condições meteorológicas atuais nas capitais do país, com base nas estações de solo de seu aeroporto.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<CptecClimaResponse> CptecClimaCapital()
+        {
+            string baseUrl = $"{BASE_URL}/cptec/v1/cidade/capital";
+            var httpResponse = await Client.GetAsync(baseUrl);
+            await EnsureSuccess(httpResponse, baseUrl);
+            var json = await httpResponse.Content.ReadAsStringAsync();
+
+            var response = new CptecClimaResponse()
+            {
+                Climas = JsonConvert.DeserializeObject<List<CptecClima>>(json),
+                CalledURL = baseUrl,
+                JsonResponse = json
+            };
+
+            return response;
+        }
+
+
+        /// <summary>
         /// Condições atuais no aeroporto 
         /// Retorna condições meteorológicas atuais no aeroporto solicitado.Este endpoint utiliza o código ICAO(4 dígitos) do aeroporto.
         /// </summary>
