@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 
 namespace SDKBrasilAPI
 {
-    public partial class BrasilAPI : IDisposable
+    public partial class BrasilAPI : IBrasilAPI, IDisposable 
     {
         public BrasilAPI()
         {
             Client = CreateHttpClient();
-        } 
-         
+        }
+
         #region Internal
 
         private const string BASE_URL = "https://brasilapi.com.br/api";
