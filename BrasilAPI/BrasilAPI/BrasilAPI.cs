@@ -471,7 +471,7 @@ namespace SDKBrasilAPI
         /// <returns></returns>
         public async Task<CorretorasResponse> Corretoras()
         {
-            string baseUrl = $"{BASE_URL}/corretoras/v1";
+            string baseUrl = $"{BASE_URL}/cvm/corretoras/v1";
             var response = await Client.GetAsync(baseUrl);
             await EnsureSuccess(response, baseUrl);
             var json = await response.Content.ReadAsStringAsync();
@@ -495,7 +495,9 @@ namespace SDKBrasilAPI
         /// <returns></returns>
         public async Task<CorretorasResponse> Corretoras(string cnpj)
         {
-            string baseUrl = $"{BASE_URL}/corretoras/v1/{cnpj}";
+            //Adicionado para remover mascaras caso venha... 
+            cnpj = OnlyNumbers(cnpj);
+            string baseUrl = $"{BASE_URL}/cvm/corretoras/v1/{cnpj}";
             var response = await Client.GetAsync(baseUrl);
             await EnsureSuccess(response, baseUrl);
             var json = await response.Content.ReadAsStringAsync();
