@@ -572,7 +572,7 @@ namespace SDKBrasilAPI
         /// <returns></returns>
         public async Task<CptecClimaResponse> CptecClimaCapital()
         {
-            string baseUrl = $"{BASE_URL}/cptec/v1/cidade/capital";
+            string baseUrl = $"{BASE_URL}/cptec/v1/clima/capital";
             var httpResponse = await Client.GetAsync(baseUrl);
             await EnsureSuccess(httpResponse, baseUrl);
             var json = await httpResponse.Content.ReadAsStringAsync();
@@ -663,7 +663,7 @@ namespace SDKBrasilAPI
         /// <returns></returns>
         public async Task<CptecOndasResponse> CptecOndas(int cidadeCodigo)
         {
-            string baseUrl = $"{BASE_URL}/cptec/v1/clima/ondas/{cidadeCodigo}";
+            string baseUrl = $"{BASE_URL}/cptec/v1/ondas/{cidadeCodigo}";
             var httpResponse = await Client.GetAsync(baseUrl);
             await EnsureSuccess(httpResponse, baseUrl);
             var json = await httpResponse.Content.ReadAsStringAsync();
@@ -685,7 +685,7 @@ namespace SDKBrasilAPI
         /// <returns></returns>
         public async Task<CptecOndasResponse> CptecOndas(int cidadeCodigo, int dias)
         {
-            string baseUrl = $"{BASE_URL}/cptec/v1/clima/ondas/{cidadeCodigo}/{dias}";
+            string baseUrl = $"{BASE_URL}/cptec/v1/ondas/{cidadeCodigo}/{dias}";
             var httpResponse = await Client.GetAsync(baseUrl);
             await EnsureSuccess(httpResponse, baseUrl);
             var json = await httpResponse.Content.ReadAsStringAsync();
