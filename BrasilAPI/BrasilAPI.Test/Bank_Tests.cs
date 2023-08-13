@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SDKBrasilAPI;
+using SDKBrasilAPI.Responses;
 
 namespace BrasilAPI_Test
 {

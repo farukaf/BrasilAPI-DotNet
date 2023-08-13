@@ -8,6 +8,7 @@
 /BrasilAPI/BrasilAPI.Test/bin/Debug/netcoreapp3.1
 /BrasilAPI/BrasilAPI.Test/obj
 /BrasilAPI/BrasilAPI/BrasilAPI.csproj.user
+/BrasilAPI/.vs
 /BrasilAPI/.vs/BrasilAPI
 /BrasilAPI/BrasilAPI/bin
 /BrasilAPI/BrasilAPI/Properties/PublishProfiles
@@ -17,3 +18,5 @@
 /BrasilAPI/Exemplo/ConsoleApp/obj
 /BrasilAPI/Exemplo/bin/Debug/net6.0
 /BrasilAPI/Exemplo/obj
+obj
+bin

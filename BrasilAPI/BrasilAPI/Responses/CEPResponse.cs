@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
+﻿using System.Runtime.Serialization;
 
-namespace SDKBrasilAPI
+namespace SDKBrasilAPI.Responses
 {
     [DataContract]
     public class CEPResponse : BaseResponse
