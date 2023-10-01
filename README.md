@@ -96,7 +96,7 @@ catch (BrasilAPIException ex)
 
 
 ## Sobre a Biblioteca
-- Utilizado .Net Standart 2.0 
+- Utilizado .Net Standard 2.0 
 ### Requisitos
 - Newtonsoft.Json 10.0.3+
 - Microsoft.Extensions.DependencyInjection.Abstractions 
