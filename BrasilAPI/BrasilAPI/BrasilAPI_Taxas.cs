@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 using SDKBrasilAPI.Responses;
 using System;
 using System.Collections.Generic; 
@@ -21,7 +21,7 @@ namespace SDKBrasilAPI
 
             var taxasResponse = new TaxasResponse()
             {
-                Taxas = JsonConvert.DeserializeObject<IEnumerable<Taxa>>(json),
+                Taxas = CustomJsonSerializer<IEnumerable<Taxa>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };
@@ -47,7 +47,7 @@ namespace SDKBrasilAPI
             {
                 Taxas = new List<Taxa>()
                 {
-                    JsonConvert.DeserializeObject<Taxa>(json)
+                     CustomJsonSerializer<Taxa>(json)
                 },
                 CalledURL = baseUrl,
                 JsonResponse = json

@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json; 
+﻿using SDKBrasilAPI.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
-using System.Runtime.CompilerServices; 
+using System.Runtime.CompilerServices;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -12,17 +14,25 @@ using System.Threading.Tasks;
 
 namespace SDKBrasilAPI
 {
-    public partial class BrasilAPI : IBrasilAPI, IDisposable 
+    public partial class BrasilAPI : IBrasilAPI, IDisposable
     {
         public BrasilAPI()
         {
             Client = CreateHttpClient();
+            jsonSerializerOptions = new JsonSerializerOptions();
+            jsonSerializerOptions.Converters.Add(new FlexibleEnumConverter<UF>());
         }
 
         #region Internal
 
-        private const string BASE_URL = "https://brasilapi.com.br/api";
-        private HttpClient Client;
+        internal const string BASE_URL = "https://brasilapi.com.br/api";
+        internal HttpClient Client;
+        JsonSerializerOptions jsonSerializerOptions;
+         
+        private T CustomJsonSerializer<T>(string json)
+        {
+            return JsonSerializer.Deserialize<T>(json, jsonSerializerOptions);
+        }
 
         internal string OnlyNumbers(string str)
         {
@@ -74,13 +84,15 @@ namespace SDKBrasilAPI
 
                 try
                 {
-                    dynamic jsonObj = JsonConvert.DeserializeObject<object>(contentString);
-                    content = jsonObj;
-                    message = (string)jsonObj["message"];
+                    JsonDocument doc = JsonDocument.Parse(contentString);
+                    JsonElement root = doc.RootElement;
+
+                    content = root;
+                    message = root.GetProperty("message").GetString();
                 }
                 catch (Exception)
                 {
-
+                     //Não permite uma exception desconhecida...
                 }
 
                 throw new BrasilAPIException(message)

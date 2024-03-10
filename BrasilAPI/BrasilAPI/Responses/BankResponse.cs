@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace SDKBrasilAPI.Responses
 {
@@ -7,20 +7,19 @@ namespace SDKBrasilAPI.Responses
     {
         public IEnumerable<Bank> Banks { get; set; }
     }
-
-    [DataContract]
+     
     public class Bank
     {
-        [DataMember(Name = "ispb")]
+        [JsonPropertyName("ispb")]
         public string ISPB { get; set; }
 
-        [DataMember(Name = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [DataMember(Name = "code")]
+        [JsonPropertyName("code")]
         public int? Code { get; set; }
 
-        [DataMember(Name = "fullName")]
+        [JsonPropertyName("fullName")]
         public string FullName { get; set; }
     }
 

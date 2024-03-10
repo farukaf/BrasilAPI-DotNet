@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 using SDKBrasilAPI.Responses;
 using System;
 using System.Collections.Generic; 
@@ -27,7 +27,7 @@ namespace SDKBrasilAPI
 
             var response = new CptecCidadeResponse()
             {
-                Cidades = JsonConvert.DeserializeObject<IEnumerable<CptecCidade>>(json),
+                Cidades = CustomJsonSerializer<IEnumerable<CptecCidade>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };
@@ -52,7 +52,7 @@ namespace SDKBrasilAPI
 
             var response = new CptecCidadeResponse()
             {
-                Cidades = JsonConvert.DeserializeObject<IEnumerable<CptecCidade>>(json),
+                Cidades = CustomJsonSerializer<IEnumerable<CptecCidade>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };
@@ -75,7 +75,7 @@ namespace SDKBrasilAPI
 
             var response = new CptecClimaResponse()
             {
-                Climas = JsonConvert.DeserializeObject<IEnumerable<CptecClima>>(json),
+                Climas = CustomJsonSerializer<IEnumerable<CptecClima>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };
@@ -100,7 +100,7 @@ namespace SDKBrasilAPI
             var corretorasResponse = new CptecClimaResponse()
             {
                 Climas = new List<CptecClima>(){
-                    JsonConvert.DeserializeObject<CptecClima>(json)
+                     CustomJsonSerializer<CptecClima>(json)
                 },
                 CalledURL = baseUrl,
                 JsonResponse = json
@@ -122,7 +122,7 @@ namespace SDKBrasilAPI
             await EnsureSuccess(httpResponse, baseUrl);
             var json = await httpResponse.Content.ReadAsStringAsync();
 
-            var response = JsonConvert.DeserializeObject<CptecPrevisaoResponse>(json);
+            var response = CustomJsonSerializer<CptecPrevisaoResponse>(json);
 
             response.CalledURL = baseUrl;
             response.JsonResponse = json;
@@ -144,7 +144,7 @@ namespace SDKBrasilAPI
             await EnsureSuccess(httpResponse, baseUrl);
             var json = await httpResponse.Content.ReadAsStringAsync();
 
-            var response = JsonConvert.DeserializeObject<CptecPrevisaoResponse>(json);
+            var response = CustomJsonSerializer<CptecPrevisaoResponse>(json);
 
             response.CalledURL = baseUrl;
             response.JsonResponse = json;
@@ -164,7 +164,7 @@ namespace SDKBrasilAPI
             await EnsureSuccess(httpResponse, baseUrl);
             var json = await httpResponse.Content.ReadAsStringAsync();
 
-            var response = JsonConvert.DeserializeObject<CptecOndasResponse>(json);
+            var response = CustomJsonSerializer<CptecOndasResponse>(json);
 
             response.CalledURL = baseUrl;
             response.JsonResponse = json;
@@ -186,7 +186,7 @@ namespace SDKBrasilAPI
             await EnsureSuccess(httpResponse, baseUrl);
             var json = await httpResponse.Content.ReadAsStringAsync();
 
-            var response = JsonConvert.DeserializeObject<CptecOndasResponse>(json);
+            var response = CustomJsonSerializer<CptecOndasResponse>(json);
 
             response.CalledURL = baseUrl;
             response.JsonResponse = json;

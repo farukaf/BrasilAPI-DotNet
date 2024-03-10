@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 using SDKBrasilAPI.Responses;
 using System;
 using System.Threading.Tasks;
@@ -32,7 +32,7 @@ namespace SDKBrasilAPI
 
             var json = await response.Content.ReadAsStringAsync();
 
-            var cepResponse = JsonConvert.DeserializeObject<CEPResponse>(json);
+            var cepResponse = CustomJsonSerializer<CEPResponse>(json);
 
             cepResponse.CalledURL = baseUrl;
             cepResponse.JsonResponse = json;
@@ -63,12 +63,13 @@ namespace SDKBrasilAPI
 
             var json = await response.Content.ReadAsStringAsync();
 
-            var cepResponse = JsonConvert.DeserializeObject<CEPResponse>(json);
+            var cepResponse = CustomJsonSerializer<CEPResponse>(json);
 
             cepResponse.CalledURL = baseUrl;
             cepResponse.JsonResponse = json;
 
             return cepResponse;
         }
+
     }
 }

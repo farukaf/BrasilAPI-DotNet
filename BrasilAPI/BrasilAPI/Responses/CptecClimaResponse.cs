@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace SDKBrasilAPI.Responses
 {
@@ -9,28 +9,27 @@ namespace SDKBrasilAPI.Responses
         public IEnumerable<CptecClima> Climas { get; set; }
     }
 
-    [DataContract]
     public class CptecClima
     {
-        [DataMember(Name = "umidade")]
+        [JsonPropertyName("umidade")]
         public int? Umidade { get; set; }
-        [DataMember(Name = "intensidade")]
+        [JsonPropertyName("intensidade")]
         public string Intensidade { get; set; }
-        [DataMember(Name = "codigo_icao")]
+        [JsonPropertyName("codigo_icao")]
         public string CodigoIcao { get; set; }
-        [DataMember(Name = "pressao_atmosferica")]
+        [JsonPropertyName("pressao_atmosferica")]
         public int? PressaoAtmosferica { get; set; }
-        [DataMember(Name = "vento")]
+        [JsonPropertyName("vento")]
         public int? Vento { get; set; }
-        [DataMember(Name = "direcao_vento")]
+        [JsonPropertyName("direcao_vento")]
         public int? DirecaoVento { get; set; }
-        [DataMember(Name = "condicao")]
+        [JsonPropertyName("condicao")]
         public string Condicao { get; set; }
-        [DataMember(Name = "condicao_desc")]
+        [JsonPropertyName("condicao_desc")]
         public string CondicaoDesc { get; set; }
-        [DataMember(Name = "temp")]
+        [JsonPropertyName("temp")]
         public int? Temp { get; set; }
-        [DataMember(Name = "atualizado_em")]
+        [JsonPropertyName("atualizado_em")]
         public DateTime? AtualizadoEm { get; set; }
     }
 

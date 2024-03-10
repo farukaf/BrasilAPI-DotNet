@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace SDKBrasilAPI.Responses
 {
@@ -10,14 +9,13 @@ namespace SDKBrasilAPI.Responses
 
     }
 
-    [DataContract]
     public class CptecCidade
     {
-        [DataMember(Name = "id")]
+        [JsonPropertyName("id")]
         public int id { get; set; }
-        [DataMember(Name = "nome")]
+        [JsonPropertyName("nome")]
         public string nome { get; set; }
-        [DataMember(Name = "estado")]
+        [JsonPropertyName("estado")]
         public string estado { get; set; }
     } 
 }

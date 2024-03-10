@@ -1,30 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
+using System.Text.Json.Serialization;
 
 namespace SDKBrasilAPI.Responses
 {
-    [DataContract]
     public class RegistroBrResponse : BaseResponse
     {
-        [DataMember(Name = "status_code")]
+        [JsonPropertyName("status_code")]
         public int StatusCode { get; set; }
-        [DataMember(Name = "status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
-        [DataMember(Name = "fqdn")]
+        [JsonPropertyName("fqdn")]
         public string Fqdn { get; set; }
-        [DataMember(Name = "fqdnace")]
+        [JsonPropertyName("fqdnace")]
         public string Fqdnace { get; set; }
-        [DataMember(Name = "exempt")]
+        [JsonPropertyName("exempt")]
         public bool Exempt { get; set; }
-        [DataMember(Name = "hosts")]
+        [JsonPropertyName("hosts")]
         public string[] Hosts { get; set; }
-        [DataMember(Name = "publicationstatus")]
+        [JsonPropertyName("publicationstatus")]
         public string PublicationStatus { get; set; }
-        [DataMember(Name = "expiresat")]
+        [JsonPropertyName("expiresat")]
         public DateTime ExpiresAt { get; set; }
-        [DataMember(Name = "suggestions")]
+        [JsonPropertyName("suggestions")]
         public string[] Suggestions { get; set; }
     }
 }

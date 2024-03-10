@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 using SDKBrasilAPI.Responses;
 using System; 
 using System.Threading.Tasks; 
@@ -19,7 +19,7 @@ namespace SDKBrasilAPI
             await EnsureSuccess(response, baseUrl);
             var json = await response.Content.ReadAsStringAsync();
 
-            var registroResponse = JsonConvert.DeserializeObject<RegistroBrResponse>(json);
+            var registroResponse = CustomJsonSerializer<RegistroBrResponse>(json);
 
             registroResponse.CalledURL = baseUrl;
             registroResponse.JsonResponse = json;

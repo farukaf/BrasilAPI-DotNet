@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace SDKBrasilAPI.Responses
 {
@@ -9,16 +9,15 @@ namespace SDKBrasilAPI.Responses
         public IEnumerable<Feriado> Feriados { get; set; }
     }
 
-    [DataContract]
     public class Feriado
     {
-        [DataMember(Name = "date")]
+        [JsonPropertyName("date")]
         public DateTime? Date { get; set; }
 
-        [DataMember(Name = "name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [DataMember(Name = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 }

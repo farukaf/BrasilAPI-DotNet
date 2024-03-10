@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace SDKBrasilAPI.Responses
 {
@@ -19,63 +20,61 @@ namespace SDKBrasilAPI.Responses
     }
 
 
-    [DataContract]
     public class TabelaFIPE
     {
-        [DataMember(Name = "codigo")]
+        [JsonPropertyName("codigo")]
         public int Codigo { get; set; }
-        [DataMember(Name = "mes")]
+        [JsonPropertyName("mes")]
         public string Mes { get; set; }
     }
 
 
-    [DataContract]
     public class MarcaVeiculo
     {
         /// <summary>
         /// Nome da Marca
         /// </summary>
-        [DataMember(Name = "nome")]
+        [JsonPropertyName("nome")]
         public string Nome { get; set; }
 
         /// <summary>
         /// Codigo da Marca
         /// </summary>
-        [DataMember(Name = "valor")]
+        [JsonPropertyName("valor")]
         public string Valor { get; set; }
     }
 
     [DataContract]
     public class PrecoFIPE
     {
-        [DataMember(Name = "valor")]
+        [JsonPropertyName("valor")]
         public string valor { get; set; }
 
-        [DataMember(Name = "marca")]
+        [JsonPropertyName("marca")]
         public string marca { get; set; }
 
-        [DataMember(Name = "modelo")]
+        [JsonPropertyName("modelo")]
         public string modelo { get; set; }
 
-        [DataMember(Name = "anoModelo")]
+        [JsonPropertyName("anoModelo")]
         public int anoModelo { get; set; }
 
-        [DataMember(Name = "combustivel")]
+        [JsonPropertyName("combustivel")]
         public string combustivel { get; set; }
 
-        [DataMember(Name = "codigoFipe")]
+        [JsonPropertyName("codigoFipe")]
         public string codigoFipe { get; set; }
 
-        [DataMember(Name = "mesReferencia")]
+        [JsonPropertyName("mesReferencia")]
         public string mesReferencia { get; set; }
 
-        [DataMember(Name = "tipoVeiculo")]
+        [JsonPropertyName("tipoVeiculo")]
         public int tipoVeiculo { get; set; }
 
-        [DataMember(Name = "siglaCombustivel")]
+        [JsonPropertyName("siglaCombustivel")]
         public string siglaCombustivel { get; set; }
 
-        [DataMember(Name = "dataConsulta")]
+        [JsonPropertyName("dataConsulta")]
         public string dataConsulta { get; set; }
     }
 

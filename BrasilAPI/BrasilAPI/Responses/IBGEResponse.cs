@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace SDKBrasilAPI.Responses
 {
@@ -9,34 +10,33 @@ namespace SDKBrasilAPI.Responses
         public IEnumerable<IBGE> IBGEs { get; set; }
     }
 
-    [DataContract]
     public class IBGE
     {
-        [DataMember(Name = "id")]
+        [JsonPropertyName("id")]
         public int ID { get; set; }
 
         public UF UF { get => (UF)ID; }
 
-        [DataMember(Name = "sigla")]
+        [JsonPropertyName("sigla")]
         public string Sigla { get; set; }
 
-        [DataMember(Name = "nome")]
+        [JsonPropertyName("nome")]
         public string Nome { get; set; }
 
-        [DataMember(Name = "regiao")]
+        [JsonPropertyName("regiao")]
         public Regiao Regiao { get; set; }
     }
 
     [DataContract]
     public class Regiao
     {
-        [DataMember(Name = "id")]
+        [JsonPropertyName("id")]
         public int ID { get; set; }
 
-        [DataMember(Name = "sigla")]
+        [JsonPropertyName("sigla")]
         public string Sigla { get; set; }
 
-        [DataMember(Name = "nome")]
+        [JsonPropertyName("nome")]
         public string Nome { get; set; }
     }
 
