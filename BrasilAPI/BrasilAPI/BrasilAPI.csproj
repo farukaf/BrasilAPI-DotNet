@@ -10,7 +10,6 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <RootNamespace>SDKBrasilAPI</RootNamespace>
-    <PackageReleaseNotes>Adicionado três novos endpoints relacionados a tabela FIPE</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
