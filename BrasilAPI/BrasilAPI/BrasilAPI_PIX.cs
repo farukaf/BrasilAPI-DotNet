@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 using SDKBrasilAPI.Responses;
 using System;
 using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace SDKBrasilAPI
 
             var response = new ParticipantePIXResponse()
             {
-                Parcipantes = JsonConvert.DeserializeObject<IEnumerable<ParticipantePIX>>(json),
+                Parcipantes = CustomJsonSerializer<IEnumerable<ParticipantePIX>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };

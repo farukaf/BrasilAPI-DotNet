@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 using SDKBrasilAPI.Responses;
 using System;
 using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace SDKBrasilAPI
 
             BankResponse bankResponse = new BankResponse()
             {
-                Banks = JsonConvert.DeserializeObject<IEnumerable<Bank>>(json),
+                Banks = CustomJsonSerializer<IEnumerable<Bank>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };
@@ -55,7 +55,7 @@ namespace SDKBrasilAPI
                 JsonResponse = json
             };
 
-            (bankResponse.Banks as List<Bank>).Add(JsonConvert.DeserializeObject<Bank>(json));
+            (bankResponse.Banks as List<Bank>).Add(CustomJsonSerializer<Bank>(json));
 
             return bankResponse;
         }

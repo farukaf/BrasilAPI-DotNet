@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 using SDKBrasilAPI.Responses;
 using System; 
 using System.Threading.Tasks;
@@ -27,7 +27,7 @@ namespace SDKBrasilAPI
 
             var json = await response.Content.ReadAsStringAsync();
 
-            var cnpjResponse = JsonConvert.DeserializeObject<CNPJResponse>(json);
+            var cnpjResponse = CustomJsonSerializer<CNPJResponse>(json);
 
             cnpjResponse.CalledURL = baseUrl;
             cnpjResponse.JsonResponse = json;

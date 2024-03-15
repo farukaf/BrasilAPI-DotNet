@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 using SDKBrasilAPI.Responses;
 using System;
 using System.Collections.Generic; 
@@ -25,7 +25,7 @@ namespace SDKBrasilAPI
 
             var ibgeResponse = new IBGEResponse()
             {
-                IBGEs = JsonConvert.DeserializeObject<IEnumerable<IBGE>>(json),
+                IBGEs = CustomJsonSerializer<IEnumerable<IBGE>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };
@@ -75,7 +75,7 @@ namespace SDKBrasilAPI
                 JsonResponse = json
             };
 
-            (ibgeResponse.IBGEs as List<IBGE>).Add(JsonConvert.DeserializeObject<IBGE>(json));
+            (ibgeResponse.IBGEs as List<IBGE>).Add(CustomJsonSerializer<IBGE>(json));
 
             return ibgeResponse;
         }
@@ -97,7 +97,7 @@ namespace SDKBrasilAPI
 
             var ibgeResponse = new IBGEMunicipiosResponse()
             {
-                Municipios = JsonConvert.DeserializeObject<IEnumerable<Municipio>>(json),
+                Municipios = CustomJsonSerializer<IEnumerable<Municipio>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };

@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 using SDKBrasilAPI.Responses;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 
 namespace SDKBrasilAPI
 {
@@ -26,7 +26,7 @@ namespace SDKBrasilAPI
 
             var feriadoResponse = new FeriadosResponse()
             {
-                Feriados = JsonConvert.DeserializeObject<IEnumerable<Feriado>>(json),
+                Feriados = CustomJsonSerializer<IEnumerable<Feriado>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };

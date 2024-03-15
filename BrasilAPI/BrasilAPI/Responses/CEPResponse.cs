@@ -1,41 +1,37 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace SDKBrasilAPI.Responses
-{
-    [DataContract]
+{ 
     public class CEPResponse : BaseResponse
     {
-        [DataMember(Name = "cep")]
+        [JsonPropertyName("cep")]
         public string CEP { get; set; }
-        [DataMember(Name = "state")]
+        [JsonPropertyName("state")]
         public UF UF { get; set; }
-        [DataMember(Name = "city")]
+        [JsonPropertyName("city")]
         public string City { get; set; }
-        [DataMember(Name = "neighborhood")]
+        [JsonPropertyName("neighborhood")]
         public string Neighborhood { get; set; }
-        [DataMember(Name = "street")]
+        [JsonPropertyName("street")]
         public string Street { get; set; }
-        [DataMember(Name = "location")]
+        [JsonPropertyName("location")]
         public Location Location { get; set; }
     }
 
 
-    [DataContract]
     public class Location
     {
-        [DataMember(Name = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
-        [DataMember(Name = "coordinates")]
+        [JsonPropertyName("coordinates")]
         public Coordinates Coordinates { get; set; }
     }
 
-
-    [DataContract]
     public class Coordinates
     {
-        [DataMember(Name = "longitude")]
+        [JsonPropertyName("longitude")]
         public string Longitude { get; set; }
-        [DataMember(Name = "latitude")]
+        [JsonPropertyName("latitude")]
         public string Latitude { get; set; }
     }
 

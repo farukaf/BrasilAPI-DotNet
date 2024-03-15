@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace SDKBrasilAPI.Responses
 {
@@ -10,13 +8,11 @@ namespace SDKBrasilAPI.Responses
         public IEnumerable<Taxa> Taxas { get; set; }
     }
 
-
-    [DataContract]
     public class Taxa
     {
-        [DataMember(Name = "nome")]
+        [JsonPropertyName("nome")]
         public string Nome { get; set; }
-        [DataMember(Name = "valor")]
+        [JsonPropertyName("valor")]
         public float Valor { get; set; }
     }
 

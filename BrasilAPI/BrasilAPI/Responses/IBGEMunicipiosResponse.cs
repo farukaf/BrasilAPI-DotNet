@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace SDKBrasilAPI.Responses
 {
@@ -7,12 +7,12 @@ namespace SDKBrasilAPI.Responses
     {
         public IEnumerable<Municipio> Municipios { get; set; }
     }
-    [DataContract]
+
     public class Municipio
     {
-        [DataMember(Name = "nome")]
+        [JsonPropertyName("nome")]
         public string Nome { get; set; }
-        [DataMember(Name = "codigo_ibge")]
+        [JsonPropertyName("codigo_ibge")]
         public string CodigoIBGE { get; set; }
     }
 }

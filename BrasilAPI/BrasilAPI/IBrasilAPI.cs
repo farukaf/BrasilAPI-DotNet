@@ -21,7 +21,6 @@ namespace SDKBrasilAPI
         Task<CptecOndasResponse> CptecOndas(int cidadeCodigo);
         Task<CptecOndasResponse> CptecOndas(int cidadeCodigo, int dias);
         Task<DDDResponse> DDD(int ddd);
-        void Dispose();
         Task<FeriadosResponse> Feriados(int ano);
         Task<FIPEMarcasResponse> FIPE_Marcas(TipoVeiculo? tipoVeiculo = null, long? tabelaReferencia = null);
         Task<FIPEPrecosResponse> FIPE_Precos(string codigoFipe, long? tabelaReferencia = null);
@@ -38,5 +37,8 @@ namespace SDKBrasilAPI
         Task<RegistroBrResponse> RegistroBR(string dominio);
         Task<TaxasResponse> Taxas();
         Task<TaxasResponse> Taxas(string sigla = "");
+
+
+        void Dispose();
     }
 }

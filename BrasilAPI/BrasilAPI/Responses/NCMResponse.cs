@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace SDKBrasilAPI.Responses
 {
@@ -7,23 +7,22 @@ namespace SDKBrasilAPI.Responses
     {
         public IEnumerable<NCM> NCMs { get; set; }
     }
-
-    [DataContract]
+     
     public class NCM
     {
-        [DataMember(Name = "codigo")]
+        [JsonPropertyName("codigo")]
         public string codigo { get; set; }
-        [DataMember(Name = "descricao")]
+        [JsonPropertyName("descricao")]
         public string descricao { get; set; }
-        [DataMember(Name = "data_inicio")]
+        [JsonPropertyName("data_inicio")]
         public string DataInicio { get; set; }
-        [DataMember(Name = "data_fim")]
+        [JsonPropertyName("data_fim")]
         public string DataFim { get; set; }
-        [DataMember(Name = "tipo_ato")]
+        [JsonPropertyName("tipo_ato")]
         public string TipoAto { get; set; }
-        [DataMember(Name = "numero_ato")]
+        [JsonPropertyName("numero_ato")]
         public string NumeroAto { get; set; }
-        [DataMember(Name = "ano_ato")]
+        [JsonPropertyName("ano_ato")]
         public string AnoAto { get; set; }
     }
 

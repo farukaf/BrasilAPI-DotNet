@@ -1,5 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection; 
+﻿using Microsoft.Extensions.DependencyInjection;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("BrasilAPI.Test")]
+ 
 namespace SDKBrasilAPI
 {
     public static class DependencyInjection

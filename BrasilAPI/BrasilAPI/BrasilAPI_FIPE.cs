@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 using SDKBrasilAPI.Responses;
 using System;
 using System.Collections.Generic; 
@@ -33,7 +33,7 @@ namespace SDKBrasilAPI
 
             var fipeResponse = new FIPEMarcasResponse()
             {
-                Marcas = JsonConvert.DeserializeObject<IEnumerable<MarcaVeiculo>>(json),
+                Marcas = CustomJsonSerializer<IEnumerable<MarcaVeiculo>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };
@@ -58,7 +58,7 @@ namespace SDKBrasilAPI
 
             var fipeResponse = new FIPETabelasResponse()
             {
-                Tabelas = JsonConvert.DeserializeObject<IEnumerable<TabelaFIPE>>(json),
+                Tabelas = CustomJsonSerializer<IEnumerable<TabelaFIPE>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };
@@ -88,7 +88,7 @@ namespace SDKBrasilAPI
 
             var fipeResponse = new FIPEPrecosResponse()
             {
-                Precos = JsonConvert.DeserializeObject<IEnumerable<PrecoFIPE>>(json),
+                Precos = CustomJsonSerializer<IEnumerable<PrecoFIPE>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };

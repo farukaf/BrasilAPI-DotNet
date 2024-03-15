@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 using SDKBrasilAPI.Responses;
 using System;
 using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace SDKBrasilAPI
 
             var response = new NCMResponse()
             {
-                NCMs = JsonConvert.DeserializeObject<IEnumerable<NCM>>(json),
+                NCMs = CustomJsonSerializer<IEnumerable<NCM>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };
@@ -49,7 +49,7 @@ namespace SDKBrasilAPI
 
             var response = new NCMResponse()
             {
-                NCMs = JsonConvert.DeserializeObject<IEnumerable<NCM>>(json),
+                NCMs = CustomJsonSerializer<IEnumerable<NCM>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };
@@ -74,7 +74,7 @@ namespace SDKBrasilAPI
             var response = new NCMResponse()
             {
                 NCMs = new List<NCM>(){
-                    JsonConvert.DeserializeObject<NCM>(json)
+                     CustomJsonSerializer<NCM>(json)
                 },
                 CalledURL = baseUrl,
                 JsonResponse = json

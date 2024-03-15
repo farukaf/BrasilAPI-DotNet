@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 using SDKBrasilAPI.Responses;
 using System;
 using System.Collections.Generic; 
@@ -21,7 +21,7 @@ namespace SDKBrasilAPI
 
             var corretorasResponse = new CorretorasResponse()
             {
-                Corretoras = JsonConvert.DeserializeObject<IEnumerable<Corretora>>(json),
+                Corretoras = CustomJsonSerializer<IEnumerable<Corretora>>(json),
                 CalledURL = baseUrl,
                 JsonResponse = json
             };
@@ -48,7 +48,7 @@ namespace SDKBrasilAPI
             var corretorasResponse = new CorretorasResponse()
             {
                 Corretoras = new List<Corretora>() {
-                    JsonConvert.DeserializeObject<Corretora>(json)
+                     CustomJsonSerializer<Corretora>(json)
                 },
                 CalledURL = baseUrl,
                 JsonResponse = json

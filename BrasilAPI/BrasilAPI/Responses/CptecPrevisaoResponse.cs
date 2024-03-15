@@ -1,35 +1,33 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace SDKBrasilAPI.Responses
 {
-    [DataContract]
     public class CptecPrevisaoResponse : BaseResponse
     {
-        [DataMember(Name = "cidade")]
+        [JsonPropertyName("cidade")]
         public string Cidade { get; set; }
-        [DataMember(Name = "estado")]
+        [JsonPropertyName("estado")]
         public string Estado { get; set; }
-        [DataMember(Name = "atualizado_em")]
+        [JsonPropertyName("atualizado_em")]
         public string AtualizadoEm { get; set; }
-        [DataMember(Name = "clima")]
+        [JsonPropertyName("clima")]
         public IEnumerable<Clima> Clima { get; set; }
     }
 
-    [DataContract]
     public class Clima
     {
-        [DataMember(Name = "data")]
+        [JsonPropertyName("data")]
         public string Data { get; set; }
-        [DataMember(Name = "condicao")]
+        [JsonPropertyName("condicao")]
         public string Condicao { get; set; }
-        [DataMember(Name = "condicao_desc")]
+        [JsonPropertyName("condicao_desc")]
         public string CondicaoDesc { get; set; }
-        [DataMember(Name = "min")]
+        [JsonPropertyName("min")]
         public float? Min { get; set; }
-        [DataMember(Name = "max")]
+        [JsonPropertyName("max")]
         public float? Max { get; set; }
-        [DataMember(Name = "indice_uv")]
+        [JsonPropertyName("indice_uv")]
         public float? IndiceUv { get; set; }
     }
 

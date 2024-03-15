@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace SDKBrasilAPI.Responses
 {
@@ -9,64 +9,63 @@ namespace SDKBrasilAPI.Responses
 
     }
      
-    [DataContract]
     public class Corretora
     {
-        [DataMember(Name = "bairro")]
+        [JsonPropertyName("bairro")]
         public string Bairro { get; set; }
 
-        [DataMember(Name = "cep")]
+        [JsonPropertyName("cep")]
         public string Cep { get; set; }
 
-        [DataMember(Name = "cnpj")]
+        [JsonPropertyName("cnpj")]
         public string Cnpj { get; set; }
 
-        [DataMember(Name = "codigo_cvm")]
+        [JsonPropertyName("codigo_cvm")]
         public string CodigoCvm { get; set; }
 
-        [DataMember(Name = "complemento")]
+        [JsonPropertyName("complemento")]
         public string Complemento { get; set; }
 
-        [DataMember(Name = "data_inicio_situacao")]
+        [JsonPropertyName("data_inicio_situacao")]
         public string DataInicioSituacao { get; set; }
 
-        [DataMember(Name = "data_patrimonio_liquido")]
+        [JsonPropertyName("data_patrimonio_liquido")]
         public string DataPatrimonioLiquido { get; set; }
 
-        [DataMember(Name = "data_registro")]
+        [JsonPropertyName("data_registro")]
         public string DataRegistro { get; set; }
 
-        [DataMember(Name = "email")]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
-        [DataMember(Name = "logradouro")]
+        [JsonPropertyName("logradouro")]
         public string Logradouro { get; set; }
 
-        [DataMember(Name = "municipio")]
+        [JsonPropertyName("municipio")]
         public string Municipio { get; set; }
 
-        [DataMember(Name = "nome_social")]
+        [JsonPropertyName("nome_social")]
         public string NomeSocial { get; set; }
 
-        [DataMember(Name = "nome_comercial")]
+        [JsonPropertyName("nome_comercial")]
         public string NomeComercial { get; set; }
 
-        [DataMember(Name = "pais")]
+        [JsonPropertyName("pais")]
         public string Pais { get; set; }
 
-        [DataMember(Name = "status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
-        [DataMember(Name = "telefone")]
+        [JsonPropertyName("telefone")]
         public string Telefone { get; set; }
 
-        [DataMember(Name = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [DataMember(Name = "uf")]
+        [JsonPropertyName("uf")]
         public string Uf { get; set; }
 
-        [DataMember(Name = "valor_patrimonio_liquido")]
+        [JsonPropertyName("valor_patrimonio_liquido")]
         public string ValorPatrimonioLiquido { get; set; }
     }
 }
