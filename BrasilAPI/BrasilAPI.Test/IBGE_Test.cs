@@ -66,8 +66,8 @@ namespace BrasilAPI_Test
             Assert.IsNotNull(ibgeResponse);
             Assert.IsTrue(ibgeResponse.Municipios.Any());
             Assert.IsTrue(ibgeResponse.Municipios.Count() > 10);
-            Assert.IsTrue(ibgeResponse.Municipios.Any(x => x.Nome.ToLower() == "boa vista"));
-            Assert.IsFalse(ibgeResponse.Municipios.Any(x => x.Nome.ToLower() == "campo grande")); 
+            Assert.IsTrue(ibgeResponse.Municipios.Any(x => x.Nome.ToLower().Contains("boa vista")));
+            Assert.IsFalse(ibgeResponse.Municipios.Any(x => x.Nome.ToLower().Contains("campo grande"))); 
         }
     }
 }

@@ -21,6 +21,9 @@ namespace SDKBrasilAPI
             Client = CreateHttpClient();
             jsonSerializerOptions = new JsonSerializerOptions();
             jsonSerializerOptions.Converters.Add(new FlexibleEnumConverter<UF>());
+            jsonSerializerOptions.Converters.Add(new FlexibleEnumConverter<IsbnProviders>());
+            jsonSerializerOptions.Converters.Add(new FlexibleEnumConverter<IsbnDimensionUnit>());
+            jsonSerializerOptions.Converters.Add(new FlexibleEnumConverter<IsbnFormat>());
         }
 
         #region Internal
