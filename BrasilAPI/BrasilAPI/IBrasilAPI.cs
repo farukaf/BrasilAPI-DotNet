@@ -37,6 +37,7 @@ namespace SDKBrasilAPI
         Task<RegistroBrResponse> RegistroBR(string dominio);
         Task<TaxasResponse> Taxas();
         Task<TaxasResponse> Taxas(string sigla = "");
+        Task<ISBNResponse> ISBN(string isbn);
 
 
         void Dispose();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace SDKBrasilAPI
@@ -33,6 +34,33 @@ namespace SDKBrasilAPI
         MT = 51,
         GO = 52,
         DF = 53
+    }
+
+    public enum IsbnProviders
+    {
+        [EnumMember(Value = "cbl")]
+        CBL,
+        
+        [EnumMember(Value = "mercado-editorial")]
+        MERCADO_EDITORIAL,
+
+        [EnumMember(Value = "open-library")]
+        OPEN_LIBRARY,
+
+        [EnumMember(Value = "google-books")]
+        GOOGLE_BOOKS
+    }
+
+    public enum IsbnDimensionUnit
+    {
+        CENTIMETER,
+        INCH
+    }
+
+    public enum IsbnFormat
+    {
+        PHYSICAL,
+        DIGITAL
     }
      
 
